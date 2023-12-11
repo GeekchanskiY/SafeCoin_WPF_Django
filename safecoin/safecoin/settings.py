@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from datetime import timedelta
+from corsheaders.defaults import default_headers
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,6 +30,37 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1",
+]
+CORS_ALLOW_CREDENTIALS = False
+CORS_ALLOW_HEADERS = ["accept",
+                      "accept-encoding",
+                      "authorization",
+                      "content-type",
+                      "dnt",
+                      "origin",
+                      "user-agent",
+                      "x-csrftoken",
+                      "x-requested-with",
+                      "Access-Control-Allow-Headers",
+                      "Content-Disposition"
+                      ]
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+}
 
 # Application definition
 

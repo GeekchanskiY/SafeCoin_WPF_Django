@@ -8,4 +8,4 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ('email', 'username',)
     search_fields = ('username', 'email', 'country')
     readonly_fields = ('email',)
-    # filter_vertical = ('subscribes', 'likes')
+    filter_vertical = ('subscribes', 'likes')

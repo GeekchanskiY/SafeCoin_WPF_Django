@@ -11,8 +11,8 @@ class SCUser(AbstractUser):
     avatar = models.ImageField(upload_to='users/', null=True, blank=True)
     country = models.CharField(max_length=255, null=True, blank=True)
 
-    # subscribes = models.ManyToManyField("cryptos.Crypto", related_name="sub_cryptos", blank=True)
-    # likes = models.ManyToManyField("cryptos.Crypto", related_name="like_cryptos", blank=True)
+    subscribes = models.ManyToManyField("cryptos.Crypto", related_name="sub_cryptos", blank=True)
+    likes = models.ManyToManyField("cryptos.Crypto", related_name="like_cryptos", blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

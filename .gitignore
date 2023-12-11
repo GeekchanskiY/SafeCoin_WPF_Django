@@ -1,3 +1,4 @@
 env/
 *.pyc 
 safecoin/db.sqlite3
+safecoin/media/
